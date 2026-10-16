@@ -9,6 +9,24 @@ import { rupiah } from '@/lib/format';
 
 export const dynamicParams = false;
 
+// Meta description dirakit dari kalimat utuh menurut prioritas dan berhenti sebelum lewat
+// 155 karakter, supaya tidak terpotong di hasil pencarian.
+function deskripsiProduk(p) {
+  const BATAS = 155;
+  const glasir = p.glasir.map((g) => cariGlasir(g).nama);
+  const pilihan = [
+    [`Stoneware buatan tangan, mulai ${rupiah(hargaTermurah(p))}.`],
+    [`Glasir ${glasir.join(', ')}.`, `Tersedia ${glasir.length} glasir.`],
+    [`Dari angkatan ${p.angkatan}.`],
+  ];
+  let teks = p.ringkas;
+  for (const opsi of pilihan) {
+    const muat = opsi.find((k) => `${teks} ${k}`.length <= BATAS);
+    if (muat) teks = `${teks} ${muat}`;
+  }
+  return teks;
+}
+
 export function generateStaticParams() {
   return produk.map((p) => ({ slug: p.slug }));
 }
@@ -17,8 +35,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const p = cariProduk(slug);
   if (!p) return {};
-  const glasirNama = p.glasir.map((g) => cariGlasir(g).nama).join(', ');
-  const deskripsi = `${p.ringkas} Glasir ${glasirNama}. Mulai ${rupiah(hargaTermurah(p))}, stoneware buatan tangan dari angkatan ${p.angkatan}.`;
+  const deskripsi = deskripsiProduk(p);
   return {
     title: p.nama,
     description: deskripsi,

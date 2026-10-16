@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import Ware from '@/components/Ware';
 
+export const metadata = {
+  title: 'Halaman tidak ditemukan',
+  robots: { index: false, follow: true },
+  alternates: { canonical: null },
+};
+
 export default function TidakDitemukan() {
   return (
     <div className="wadah grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-12">
-      <title>Halaman tidak ditemukan — Tanur</title>
       <div className="relative mx-auto aspect-square w-full max-w-sm lg:col-span-5">
         <div aria-hidden="true" className="cincin absolute inset-0 rounded-full bg-tanah" />
         <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" aria-hidden="true">

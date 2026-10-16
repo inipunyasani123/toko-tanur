@@ -59,19 +59,19 @@ export default function Header() {
         <Link
           href="/keranjang"
           className="ms-auto flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-sm px-2 py-2 font-medium hover:bg-tanah md:ms-3"
-          aria-label={`Keranjang, ${jumlah} barang`}
           aria-current={path === '/keranjang' ? 'page' : undefined}
         >
+          {/* Nama tautan dirakit dari isinya ("Keranjang 0 barang"), jadi selalu memuat teks yang terlihat. */}
           <IkonTas className="h-6 w-6" />
-          <span className="hidden sm:inline">Keranjang</span>
+          <span className="sr-only sm:not-sr-only">Keranjang</span>{' '}
           <span
             className={`label-tanur inline-flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-[0.7rem] font-semibold ${
               jumlah ? 'bg-liat-tua text-kertas' : 'bg-tanah text-tinta-2'
             }`}
-            aria-hidden="true"
           >
             {jumlah}
           </span>
+          <span className="sr-only"> barang</span>
         </Link>
 
         <button

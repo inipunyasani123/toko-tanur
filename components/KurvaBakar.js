@@ -71,7 +71,7 @@ export default function KurvaBakar() {
           height={H}
           className="block h-auto w-full touch-pan-y"
           role="img"
-          aria-label={`Kurva bakar: suhu naik dari ${angka.format(titik[0].suhu)} °C ke puncak ${angka.format(puncak.suhu)}&nbsp;°C pada jam ke-13, ditahan 15 menit, lalu turun pelan sampai ${angka.format(akhir.suhu)} °C saat tanur dibuka pada jam ke-${akhir.jam}. Gunakan panah kiri dan kanan untuk membaca tiap titik.`}
+          aria-label={`Kurva bakar: suhu naik dari ${angka.format(titik[0].suhu)} °C ke puncak ${angka.format(puncak.suhu)}\u00a0°C pada jam ke-13, ditahan 15 menit, lalu turun pelan sampai ${angka.format(akhir.suhu)} °C saat tanur dibuka pada jam ke-${akhir.jam}. Gunakan panah kiri dan kanan untuk membaca tiap titik.`}
           tabIndex={0}
           onPointerMove={dariPointer}
           onPointerDown={dariPointer}
@@ -114,7 +114,9 @@ export default function KurvaBakar() {
           <text x={puncak.x + 12} y={puncak.y - 8} fontSize="13" fill="#f7efe5" fontWeight="600">
             {angka.format(puncak.suhu)}&nbsp;°C
           </text>
-          <text x={akhir.x - 4} y={akhir.y - 12} fontSize="12" fill="#f7efe5" textAnchor="end">
+          {/* Label titik akhir diletakkan di atas kurva dengan garis penunjuk, supaya tidak menimpa garis yang turun. */}
+          <line x1={akhir.x} x2={akhir.x} y1={sy(520)} y2={akhir.y - 7} stroke="#f7efe5" strokeOpacity="0.45" strokeWidth="1" strokeDasharray="3 3" />
+          <text x={akhir.x} y={sy(560)} fontSize="12" fill="#f7efe5" textAnchor="end">
             dibuka
           </text>
           {t && (
