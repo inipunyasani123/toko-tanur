@@ -77,15 +77,10 @@ Buka http://localhost:3000. Build produksi: `npm run build` lalu `npm start`. Pe
 
 ## Kredit foto
 
-Semua foto berlisensi CC0 1.0 (domain publik), dicari lewat [Openverse](https://openverse.org), dipotong, lalu dikonversi ke WebP. Tidak ada wajah yang dikenali. Ilustrasi produk digambar sendiri dengan SVG, bukan foto.
-
-| Berkas | Judul asli | Pembuat | Sumber | Lisensi |
-| --- | --- | --- | --- | --- |
-| `proses-putar.webp` | Free person making handmade pottery | tidak dicantumkan | [rawpixel](https://www.rawpixel.com/image/5914897/image-public-domain-art-free) | CC0 1.0 |
-| `proses-uleni.webp` | Clay Hands | Alex Jones | [StockSnap](https://stocksnap.io/photo/clay-hands-469424D4C3) | CC0 1.0 |
-| `proses-rapikan.webp` | Free person making handmade pottery | tidak dicantumkan | [rawpixel](https://www.rawpixel.com/image/5924342/photo-image-public-domain-art-free) | CC0 1.0 |
-| `foto-mug-abu.webp` | Ceramic mug wooden table | tidak dicantumkan | [rawpixel](https://www.rawpixel.com/image/3283727/free-photo-image-coffee-table-wooden) | CC0 1.0 |
-| `foto-teko-tenmoku.webp` | Ceramic Teapot | Nashad Abdu | [StockSnap](https://stocksnap.io/photo/ceramic-teapot-5811FEC469) | CC0 1.0 |
+Ilustrasi produk digambar sendiri dengan SVG (`components/Ware.js`), bukan foto. Lima foto suasana dan proses
+berlisensi CC0 1.0 (rawpixel, StockSnap, Wikimedia Commons), dipotong lalu dikonversi ke WebP; tidak ada wajah yang
+dikenali. Rincian berkas, tempat tampil, pembuat, tautan sumber, dan lisensi ada di
+[public/images/SUMBER.md](public/images/SUMBER.md).
 
 ---
 
