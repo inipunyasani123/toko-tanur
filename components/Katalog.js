@@ -4,7 +4,7 @@ import { useEffect, useId, useMemo, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import KartuProduk from './KartuProduk';
 import UbinUji from './UbinUji';
-import Ware from './Ware';
+import FotoKeramik from './FotoKeramik';
 import { produk, kategori, glasir } from '@/lib/data';
 import { saringProduk, rentangFilter, urutan, produkAktif } from '@/lib/katalog';
 import { useInventaris, useTerpasang } from '@/lib/store';
@@ -250,7 +250,7 @@ export default function Katalog() {
           </ul>
         ) : (
           <div className="mt-8 grid items-center gap-6 rounded-[3px] border border-dashed border-garis-tua bg-kertas p-6 sm:grid-cols-[10rem_1fr] sm:p-8">
-            <Ware bentuk="cawan" glasir="abu" ukuranId="satuan" className="mx-auto w-32 opacity-80 sm:w-40" />
+            <span className="relative mx-auto block aspect-square w-32 overflow-hidden rounded-full bg-tanah opacity-80 sm:w-40"><FotoKeramik slug="piring-kecil-jajan" sizes="160px" alt="" /></span>
             <div>
               <h2 className="text-2xl">Rak ini kosong</h2>
               <p className="mt-2 text-tinta-2">

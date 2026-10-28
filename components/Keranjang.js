@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import Ware from './Ware';
+import FotoKeramik from './FotoKeramik';
 import { cariProduk } from '@/lib/data';
 import { hargaVarian, beratVarian, labelVarian, stokVarian, produkAktif, terlaris, hargaTermurah } from '@/lib/katalog';
 import { beratKemasan } from '@/lib/ongkir';
@@ -83,7 +83,7 @@ export default function Keranjang() {
     return (
       <div className="wadah pb-24">
         <div className="grid items-center gap-8 rounded-[3px] border border-dashed border-garis-tua bg-kertas p-6 sm:grid-cols-[12rem_1fr] sm:p-10">
-          <Ware bentuk="mangkuk" glasir="abu" ukuranId="kecil" className="mx-auto w-40 sm:w-48" />
+          <span className="relative mx-auto block aspect-square w-40 overflow-hidden rounded-full bg-tanah sm:w-48"><FotoKeramik slug="cawan-cocol" sizes="192px" alt="" /></span>
           <div>
             <h2 className="text-3xl">Keranjangmu masih kosong</h2>
             <p className="mt-2 max-w-md text-tinta-2">Mulai dari yang paling sering dipesan, atau lihat semua koleksi angkatan terbaru.</p>
@@ -97,8 +97,8 @@ export default function Keranjang() {
           {saran.map((p) => (
             <li key={p.slug}>
               <Link href={`/produk/${p.slug}`} className="group flex items-center gap-3 rounded-[3px] border border-garis bg-kertas p-3 hover:border-garis-tua">
-                <span className="block h-16 w-16 shrink-0 rounded-[3px] bg-tanah">
-                  <Ware bentuk={p.bentuk} glasir={p.glasir[0]} ukuranId={p.ukuran[0].id} className="h-full w-full" />
+                <span className="relative block h-16 w-16 shrink-0 overflow-hidden rounded-[3px] bg-tanah">
+                  <FotoKeramik slug={p.slug} sizes="64px" alt="" />
                 </span>
                 <span>
                   <span className="block font-medium group-hover:underline">{p.nama}</span>
@@ -128,8 +128,8 @@ export default function Keranjang() {
             const habis = it.stok <= 0 || !it.aktif;
             return (
               <li key={it.kunci} className="grid grid-cols-[5.5rem_1fr] gap-4 border-b border-garis py-5 sm:grid-cols-[7rem_1fr_auto]">
-                <Link href={`/produk/${it.slug}?glasir=${it.glasir}`} className="block aspect-square overflow-hidden rounded-[3px] bg-tanah" tabIndex={-1} aria-hidden="true">
-                  <Ware bentuk={it.p.bentuk} glasir={it.glasir} ukuranId={it.ukuran} iUkuran={it.p.ukuran.findIndex((x) => x.id === it.ukuran)} nUkuran={it.p.ukuran.length} className="h-full w-full" />
+                <Link href={`/produk/${it.slug}?glasir=${it.glasir}`} className="relative block aspect-square overflow-hidden rounded-[3px] bg-tanah" tabIndex={-1} aria-hidden="true">
+                  <FotoKeramik slug={it.slug} sizes="112px" alt="" />
                 </Link>
                 <div className="min-w-0">
                   <h3 className="font-display text-xl leading-snug">

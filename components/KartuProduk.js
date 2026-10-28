@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Ware from './Ware';
+import FotoKeramik from './FotoKeramik';
 import { cariGlasir, cariKategori } from '@/lib/data';
 import { rentangHarga, totalStok, hargaVarian } from '@/lib/katalog';
 import { rupiah } from '@/lib/format';
@@ -22,16 +22,13 @@ export default function KartuProduk({ produk: p, inventaris, judulTag = 'h3', gl
   const kat = cariKategori(p.kategori);
   return (
     <article className="group relative flex h-full flex-col">
-      <div className={`cincin relative aspect-[4/5] overflow-hidden rounded-[3px] ${LATAR[glasirAwal] || 'bg-tanah'}`}>
-        <Ware
-          bentuk={p.bentuk}
-          glasir={glasirAwal}
-          ukuranId={p.ukuran[p.ukuran.length - 1].id}
-          iUkuran={p.ukuran.length - 1}
-          nUkuran={p.ukuran.length}
-          className="absolute inset-x-0 bottom-[4%] mx-auto w-[96%] transition-transform duration-500 ease-out group-hover:-translate-y-1.5"
+      <div className={`cincin relative aspect-square overflow-hidden rounded-[3px] ${LATAR[glasirAwal] || 'bg-tanah'}`}>
+        <FotoKeramik
+          slug={p.slug}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
-        <p className="label-tanur absolute left-3 top-3 text-[0.64rem] text-tinta-2">Angkatan {p.angkatan}</p>
+        <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta-2">Angkatan {p.angkatan}</p>
         {stok === 0 && (
           <p className="label-tanur absolute right-3 top-3 bg-tinta px-2 py-1 text-[0.64rem] text-kertas">Habis</p>
         )}

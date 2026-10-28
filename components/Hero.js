@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import Ware from './Ware';
+import Image from 'next/image';
 import UbinUji from './UbinUji';
 import LabelTanur from './LabelTanur';
 import { glasir, site, cariProduk } from '@/lib/data';
 import { hariTanurTerakhir, tanggalPendek, rupiah, suhu } from '@/lib/format';
 import { hargaVarian } from '@/lib/katalog';
 import { useTerpasang } from '@/lib/store';
+import { fotoGlasir } from '@/lib/foto';
 
 const PRODUK_HERO = 'mangkuk-nasi-genggam';
 
@@ -57,16 +58,17 @@ export default function Hero() {
               <span className="absolute bottom-[9%] left-[14%] h-2 w-2 rounded-full bg-[#c4a17f]" />
             </div>
             <div aria-hidden="true" className="absolute inset-[13%] rounded-full border border-[#cdb497]" />
-            <Ware
-              key={pilih}
-              bentuk={p.bentuk}
-              glasir={pilih}
-              ukuranId="besar"
-              iUkuran={1}
-              nUkuran={2}
-              judul={`Ilustrasi ${p.nama} dengan glasir ${g.nama}`}
-              className="absolute inset-[6%] h-[88%] w-[88%] animate-[muncul_0.5s_ease-out] motion-reduce:animate-none"
-            />
+            <div className="absolute inset-[7%] overflow-hidden rounded-full bg-tanah-2">
+              <Image
+                key={pilih}
+                src={fotoGlasir[pilih].src}
+                alt={`${fotoGlasir[pilih].alt}, contoh pilihan glasir ${g.nama}`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 34rem, 90vw"
+                className="animate-[muncul_0.5s_ease-out] object-cover motion-reduce:animate-none"
+              />
+            </div>
             <LabelTanur
               className="absolute right-[2%] top-[4%] w-40 sm:right-[4%]"
               baris={[
@@ -78,8 +80,8 @@ export default function Hero() {
           </div>
           <p className="mx-auto mt-4 flex max-w-[34rem] flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-t border-garis-tua pt-3 text-[0.92rem]">
             <span>
-              <span className="text-tinta-3">Di gambar: </span>
-              {p.nama}, {g.nama}
+              <span className="text-tinta-3">Di foto: </span>
+              {fotoGlasir[pilih].nama}, contoh glasir {g.nama}
             </span>
             <Link href={`/produk/${p.slug}?glasir=${pilih}`} className="tautan font-medium">
               mulai {rupiah(hargaVarian(p, pilih, p.ukuran[0].id))}

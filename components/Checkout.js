@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
-import Ware from './Ware';
+import FotoKeramik from './FotoKeramik';
 import { provinsi as daftarProvinsi, layananKirim, metodeBayar, kemasan } from '@/lib/data';
 import { hitungOngkir, zonaUntuk, sarankanKayu } from '@/lib/ongkir';
 import { hitungItem } from '@/lib/pesanan';
@@ -334,8 +334,8 @@ export default function Checkout() {
           <ul className="mt-4 grid gap-3">
             {isi.map((it) => (
               <li key={it.kunci} className="flex items-center gap-3">
-                <span className="block h-14 w-14 shrink-0 rounded-[3px] bg-tanah">
-                  <Ware bentuk={it.p.bentuk} glasir={it.glasir} ukuranId={it.ukuran} iUkuran={it.p.ukuran.findIndex((x) => x.id === it.ukuran)} nUkuran={it.p.ukuran.length} className="h-full w-full" />
+                <span className="relative block h-14 w-14 shrink-0 overflow-hidden rounded-[3px] bg-tanah">
+                  <FotoKeramik slug={it.p.slug} sizes="56px" alt="" />
                 </span>
                 <span className="min-w-0 flex-1 text-[0.92rem]">
                   <span className="block font-medium leading-snug">{it.p.nama}</span>

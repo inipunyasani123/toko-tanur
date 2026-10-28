@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Hero from '@/components/Hero';
-import Ware from '@/components/Ware';
+import FotoKeramik from '@/components/FotoKeramik';
 import UbinUji from '@/components/UbinUji';
 import Stempel from '@/components/Stempel';
 import KurvaBakar from '@/components/KurvaBakar';
@@ -32,7 +32,6 @@ function UbinKategori({ id, besar = false, className = '' }) {
   const k = kategori.find((x) => x.id === id);
   const t = TAMPIL_KATEGORI[id];
   const p = cariProduk(t.produk);
-  const iU = p.ukuran.findIndex((u) => u.id === t.ukuran);
   const { jumlah, mulai } = ringkasKategori(id);
   return (
     <Link
@@ -46,16 +45,14 @@ function UbinKategori({ id, besar = false, className = '' }) {
         {jumlah} model
         <span className="block sm:inline"> <span className="hidden sm:inline">· </span>mulai {rupiah(mulai)}</span>
       </p>
-      <Ware
-        bentuk={p.bentuk}
-        glasir={t.glasir}
-        ukuranId={t.ukuran}
-        iUkuran={Math.max(0, iU)}
-        nUkuran={p.ukuran.length}
-        className={`pointer-events-none absolute transition-transform duration-500 ease-out group-hover:-translate-y-2 ${
-          besar ? '-bottom-6 -right-6 w-[78%] max-w-[26rem]' : '-bottom-5 -right-6 w-[52%] max-w-[13rem]'
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute overflow-hidden rounded-full ring-4 ring-kertas/70 transition-transform duration-500 ease-out group-hover:-translate-y-2 ${
+          besar ? '-bottom-8 -right-8 h-[62%] max-h-[20rem] aspect-square' : '-bottom-6 -right-6 h-[46%] max-h-[10rem] aspect-square'
         }`}
-      />
+      >
+        <FotoKeramik slug={p.slug} sizes="320px" alt="" />
+      </span>
       <span className="sr-only">, lihat semua {k.nama.toLowerCase()}</span>
     </Link>
   );
@@ -135,8 +132,8 @@ export default function Beranda() {
                       <span className="font-display text-3xl leading-none text-liat-tua" aria-hidden="true">
                         {i + 1}
                       </span>
-                      <span className="block h-16 w-16 shrink-0 rounded-[3px] bg-tanah">
-                        <Ware bentuk={p.bentuk} glasir={p.glasir[0]} ukuranId={p.ukuran[0].id} iUkuran={0} nUkuran={p.ukuran.length} className="h-full w-full" />
+                      <span className="relative block h-16 w-16 shrink-0 overflow-hidden rounded-[3px] bg-tanah">
+                        <FotoKeramik slug={p.slug} sizes="64px" alt="" />
                       </span>
                       <span className="min-w-0">
                         <span className="block font-medium leading-snug group-hover:underline">{p.nama}</span>
@@ -339,14 +336,16 @@ export default function Beranda() {
           <div className="lg:col-span-6 lg:col-start-7">
             <h2 className="text-[2.1rem] sm:text-5xl">Tidak ada dua yang kembar</h2>
             <p className="mt-4 max-w-lg text-tinta-2">
-              Empat mangkuk ini keluar dari tanur yang sama dengan glasir yang sama. Tetesan glasir, letak bintik besi, dan tinggi
+              Empat mangkuk dari rak kami. Bahkan dari tanur dan glasir yang sama, tetesan glasir, letak bintik besi, dan tinggi
               bibirnya tetap berbeda sedikit. Itu tanda dibuat tangan, bukan cacat.
             </p>
             <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {['a', 'b', 'c', 'd'].map((b, i) => (
+              {['mangkuk-nasi-genggam', 'mangkuk-mi-kuah', 'mangkuk-saji-panen', 'cawan-cocol'].map((b, i) => (
                 <li key={b} className="rounded-[3px] bg-bisque">
-                  <Ware bentuk="mangkuk" glasir="seladon" ukuranId="kecil" iUkuran={0} nUkuran={2} benih={b} className="w-full" />
-                  <p className="label-tanur px-3 pb-3 text-[0.62rem] text-tinta-3">
+                  <span className="relative block aspect-square overflow-hidden rounded-t-[3px]">
+                    <FotoKeramik slug={b} sizes="(min-width: 640px) 12vw, 45vw" />
+                  </span>
+                  <p className="label-tanur px-3 py-3 text-[0.62rem] text-tinta-3">
                     Keping {String.fromCharCode(65 + i)} ·{' '}
                     <span className="whitespace-nowrap">Ø {[12.1, 11.9, 12.2, 12.0][i].toLocaleString('id-ID')} cm</span>
                   </p>

@@ -3,12 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import Ware from './Ware';
+import FotoKeramik from './FotoKeramik';
 import UbinUji from './UbinUji';
 import Stempel from './Stempel';
 import { cariProduk, cariGlasir, perawatanUmum, perawatanGlasir, catatanVariasi, site } from '@/lib/data';
 import { hargaVarian, stokVarian, varianAwal, stokGlasir, produkAktif } from '@/lib/katalog';
 import { rupiah, gram, suhu } from '@/lib/format';
+import { fotoProduk } from '@/lib/foto';
 import { useInventaris, useKeranjang, useTerpasang, tambahKeKeranjang } from '@/lib/store';
 
 const LATAR = {
@@ -18,7 +19,6 @@ const LATAR = {
   abu: 'bg-[#ece3d4]',
 };
 
-const TANPA_DETAIL_KAKI = ['piring', 'piring-kecil', 'piring-oval', 'set'];
 
 export default function DetailProduk({ slug }) {
   const p = cariProduk(slug);
@@ -108,9 +108,8 @@ export default function DetailProduk({ slug }) {
   };
 
   const galeri = [
-    { jenis: 'ilustrasi', label: `${gl.nama}, ${ukuran.label}` },
+    { jenis: 'foto', ...fotoProduk[p.slug], label: `Foto ${p.nama}` },
     { jenis: 'jajaran', label: 'Semua pilihan glasir' },
-    ...(TANPA_DETAIL_KAKI.includes(p.bentuk) ? [] : [{ jenis: 'kaki', label: 'Detail kaki tanpa glasir' }]),
     ...p.foto.map((f) => ({ jenis: 'foto', ...f, label: `Foto suasana, glasir ${cariGlasir(f.glasir)?.nama}` })),
   ];
   const tampil = galeri[Math.min(gambar, galeri.length - 1)];
@@ -127,49 +126,27 @@ export default function DetailProduk({ slug }) {
         <div className="lg:col-span-7">
           <div className="lg:sticky lg:top-24">
             <div className={`cincin relative aspect-square overflow-hidden rounded-[3px] ${tampil.jenis === 'foto' ? 'bg-jelaga' : LATAR[g]}`}>
-              {tampil.jenis === 'ilustrasi' && (
-                <Ware
-                  key={`${g}-${u}`}
-                  bentuk={p.bentuk}
-                  glasir={g}
-                  ukuranId={u}
-                  iUkuran={iU}
-                  nUkuran={p.ukuran.length}
-                  judul={`Ilustrasi ${p.nama}, glasir ${gl.nama}, ${ukuran.label}`}
-                  className="absolute inset-[5%] h-[90%] w-[90%] animate-[muncul_0.45s_ease-out] motion-reduce:animate-none"
-                />
-              )}
               {tampil.jenis === 'jajaran' && (
                 <div className="absolute inset-0 grid grid-cols-2 place-items-center gap-2 p-6" role="img" aria-label={`${p.nama} dalam ${p.glasir.length} glasir: ${p.glasir.map((x) => cariGlasir(x).nama).join(', ')}`}>
                   {p.glasir.map((x) => (
                     <div key={x} className="flex w-full flex-col items-center">
-                      <Ware bentuk={p.bentuk} glasir={x} ukuranId={u} iUkuran={iU} nUkuran={p.ukuran.length} className="w-[86%]" />
+                      <UbinUji glasir={x} className="w-[34%]" />
                       <span className="label-tanur text-[0.64rem] text-tinta-2">{cariGlasir(x).nama}</span>
                     </div>
                   ))}
-                </div>
-              )}
-              {tampil.jenis === 'kaki' && (
-                <div className="absolute inset-0" role="img" aria-label={`Detail kaki ${p.nama} yang dibiarkan tanpa glasir, dengan tetesan glasir ${gl.nama}`}>
-                  <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
-                    <Ware bentuk={p.bentuk} glasir={g} ukuranId={u} iUkuran={iU} nUkuran={p.ukuran.length} x={-260} y={-500} width={920} height={920} />
-                  </svg>
-                  <p className="label-tanur absolute bottom-4 left-4 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta">Kaki tanpa glasir · bekas kerok terlihat</p>
                 </div>
               )}
               {tampil.jenis === 'foto' && (
                 <figure className="absolute inset-0 m-0">
                   <Image src={tampil.src} alt={tampil.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
                   <figcaption className="label-tanur absolute bottom-3 left-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta">
-                    Foto suasana · glasir {cariGlasir(tampil.glasir)?.nama}
+                    {tampil.glasir ? `Foto suasana · glasir ${cariGlasir(tampil.glasir)?.nama}` : 'Foto contoh bentuk · warna glasir ada di ubin uji'}
                   </figcaption>
                 </figure>
               )}
-              {tampil.jenis !== 'foto' && (
-                <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta-2">
-                  Angkatan {p.angkatan} · {gl.kode}
-                </p>
-              )}
+              <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta-2">
+                Angkatan {p.angkatan} · {gl.kode}
+              </p>
             </div>
             <ul className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label="Gambar produk">
               {galeri.map((it, i) => (
@@ -191,13 +168,8 @@ export default function DetailProduk({ slug }) {
                           <span key={x} className="block h-4 w-4 rounded-[2px]" style={{ background: cariGlasir(x).warna }} />
                         ))}
                       </span>
-                    ) : it.jenis === 'kaki' ? (
-                      <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
-                        <Ware bentuk={p.bentuk} glasir={g} ukuranId={u} iUkuran={iU} nUkuran={p.ukuran.length} x={-260} y={-500} width={920} height={920} />
-                      </svg>
-                    ) : (
-                      <Ware bentuk={p.bentuk} glasir={g} ukuranId={u} iUkuran={iU} nUkuran={p.ukuran.length} className="h-full w-full" />
-                    )}
+                    
+                    ) : null}
                   </button>
                 </li>
               ))}

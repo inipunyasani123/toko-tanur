@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import Ware from './Ware';
+import FotoKeramik from './FotoKeramik';
 import Stempel from './Stempel';
 import Linimasa from './Linimasa';
 import { metodeBayar, site, cariProduk, cariGlasir } from '@/lib/data';
@@ -207,8 +207,8 @@ export default function Pesanan({ kode }) {
                   const p = cariProduk(it.slug);
                   return (
                     <li key={`${it.slug}-${it.glasir}-${it.ukuran}`} className="flex items-center gap-3">
-                      <span className="block h-14 w-14 shrink-0 rounded-[3px] bg-tanah">
-                        {p && <Ware bentuk={p.bentuk} glasir={it.glasir} ukuranId={it.ukuran} iUkuran={p.ukuran.findIndex((x) => x.id === it.ukuran)} nUkuran={p.ukuran.length} className="h-full w-full" />}
+                      <span className="relative block h-14 w-14 shrink-0 overflow-hidden rounded-[3px] bg-tanah">
+                        {p && <FotoKeramik slug={p.slug} sizes="56px" alt="" />}
                       </span>
                       <span className="min-w-0 flex-1 text-[0.92rem]">
                         <span className="block font-medium leading-snug">{it.nama}</span>
