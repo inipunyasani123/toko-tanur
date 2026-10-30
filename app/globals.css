@@ -283,8 +283,10 @@
   display: none;
 }
 
-/* Target sentuh tautan footer dan ringkasan lipat */
-footer a:not(.inline-flex):not([class*="block"]) { display: inline-flex; align-items: center; min-height: 28px; }
-summary { min-height: 28px; }
-table a { display: inline-block; padding-block: 4px; }
-nav[aria-label="Jejak halaman"] a { display: inline-block; padding-block: 5px; }
+/* Target sentuh tautan footer dan ringkasan lipat (di @layer base agar kelas utilitas seperti flex/grid/hidden tetap menang) */
+@layer base {
+  footer a:not(.inline-flex):not([class*="block"]) { display: inline-flex; align-items: center; min-height: 28px; }
+  summary { min-height: 28px; }
+  table a { display: inline-block; padding-block: 4px; }
+  nav[aria-label="Jejak halaman"] a { display: inline-block; padding-block: 5px; }
+}
