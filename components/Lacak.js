@@ -152,7 +152,7 @@ export default function Lacak() {
                       className="flex w-full items-center justify-between gap-3 rounded-[3px] border border-garis bg-kertas px-3 py-2.5 text-start hover:border-garis-tua"
                     >
                       <span>
-                        <span className="label-tanur block text-[0.72rem] text-tinta">{p.kode}</span>
+                        <span className="label-tanur block text-[0.75rem] text-tinta">{p.kode}</span>
                         <span className="block text-[0.82rem] text-tinta-2">HP berakhiran {akhir}</span>
                       </span>
                       <span className="text-[0.82rem] text-tinta-2">{labelStatus(p.status)}</span>

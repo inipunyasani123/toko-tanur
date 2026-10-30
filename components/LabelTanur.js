@@ -8,7 +8,7 @@ export default function LabelTanur({ baris = [], className = '', miring = -4 }) 
       <div className="relative bg-kertas px-4 pb-3 pt-6 shadow-[0_1px_0_rgba(35,28,23,0.12),0_10px_24px_-14px_rgba(35,28,23,0.45)] [clip-path:polygon(14%_0,86%_0,100%_14%,100%_100%,0_100%,0_14%)]">
         <span className="absolute left-1/2 top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border border-garis-tua bg-bisque" aria-hidden="true" />
         {baris.map((b, i) => (
-          <p key={i} className={i === 0 ? 'label-tanur text-[0.68rem] text-liat-tua' : 'label-tanur mt-1 text-[0.66rem] text-tinta'}>
+          <p key={i} className={i === 0 ? 'label-tanur text-[0.75rem] text-liat-tua' : 'label-tanur mt-1 text-[0.75rem] text-tinta'}>
             {b}
           </p>
         ))}

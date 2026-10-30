@@ -131,7 +131,7 @@ export default function DetailProduk({ slug }) {
                   {p.glasir.map((x) => (
                     <div key={x} className="flex w-full flex-col items-center">
                       <UbinUji glasir={x} className="w-[34%]" />
-                      <span className="label-tanur text-[0.64rem] text-tinta-2">{cariGlasir(x).nama}</span>
+                      <span className="label-tanur text-[0.75rem] text-tinta-2">{cariGlasir(x).nama}</span>
                     </div>
                   ))}
                 </div>
@@ -139,12 +139,12 @@ export default function DetailProduk({ slug }) {
               {tampil.jenis === 'foto' && (
                 <figure className="absolute inset-0 m-0">
                   <Image src={tampil.src} alt={tampil.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
-                  <figcaption className="label-tanur absolute bottom-3 left-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta">
+                  <figcaption className="label-tanur absolute bottom-3 left-3 bg-kertas/90 px-2 py-1 text-[0.75rem] text-tinta">
                     {tampil.glasir ? `Foto suasana · glasir ${cariGlasir(tampil.glasir)?.nama}` : 'Foto contoh bentuk · warna glasir ada di ubin uji'}
                   </figcaption>
                 </figure>
               )}
-              <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta-2">
+              <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.75rem] text-tinta-2">
                 Angkatan {p.angkatan} · {gl.kode}
               </p>
             </div>
@@ -179,7 +179,7 @@ export default function DetailProduk({ slug }) {
 
         {/* Info beli */}
         <div className="lg:col-span-5">
-          <p className="label-tanur text-[0.68rem] text-liat-tua">
+          <p className="label-tanur text-[0.75rem] text-liat-tua">
             Stoneware · {suhu(site.suhuPuncak)} · angkatan {p.angkatan}
           </p>
           <h1 className="mt-2 text-[2.4rem] leading-[1.05] sm:text-5xl">{p.nama}</h1>
@@ -225,7 +225,7 @@ export default function DetailProduk({ slug }) {
                     />
                     <UbinUji glasir={id} className="w-9" />
                     <span className="mt-1.5 text-[0.8rem] leading-tight">{x.nama}</span>
-                    {habis && <span className="label-tanur mt-0.5 text-[0.6rem] text-awas">Habis</span>}
+                    {habis && <span className="label-tanur mt-0.5 text-[0.75rem] text-awas">Habis</span>}
                   </label>
                 );
               })}
@@ -260,7 +260,7 @@ export default function DetailProduk({ slug }) {
                     </span>
                     <span className="text-end">
                       <span className="block text-[0.9rem] font-medium text-tinta">{rupiah(hargaVarian(p, g, x.id))}</span>
-                      <span className={`label-tanur block text-[0.6rem] ${habis ? 'text-awas' : s <= 3 ? 'text-awas' : 'text-tinta-3'}`}>
+                      <span className={`label-tanur block text-[0.75rem] ${habis ? 'text-awas' : s <= 3 ? 'text-awas' : 'text-tinta-3'}`}>
                         {habis ? 'Habis' : s <= 3 ? `Sisa ${s}` : `Stok ${s}`}
                       </span>
                     </span>

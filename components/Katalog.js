@@ -95,7 +95,7 @@ export default function Katalog() {
           onClick={() => setPanel((v) => !v)}
         >
           {panel ? 'Tutup saringan' : 'Saring'}
-          {jumlahFilter > 0 && <span className="label-tanur rounded-full bg-liat-tua px-2 py-0.5 text-[0.65rem] text-kertas">{jumlahFilter}</span>}
+          {jumlahFilter > 0 && <span className="label-tanur rounded-full bg-liat-tua px-2 py-0.5 text-[0.75rem] text-kertas">{jumlahFilter}</span>}
         </button>
         <label className="ms-auto flex items-center gap-2 text-[0.9rem]">
           <span className="text-tinta-2">Urutkan</span>
@@ -144,7 +144,7 @@ export default function Katalog() {
                       onChange={() => balik('kategori', k.id)}
                     />
                     <span>{k.nama}</span>
-                    <span className="label-tanur ms-auto text-[0.66rem] text-tinta-3">{n}</span>
+                    <span className="label-tanur ms-auto text-[0.75rem] text-tinta-3">{n}</span>
                   </label>
                 </li>
               );

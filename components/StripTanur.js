@@ -12,7 +12,7 @@ export default function StripTanur() {
     <aside aria-label="Jadwal pembakaran" className="gelap bg-jelaga text-[#efe5d8] print:hidden">
       <p className="wadah flex min-h-9 flex-wrap items-center justify-center gap-x-3 py-1.5 text-center text-[0.8rem] leading-snug">
         <span>Tanur kami dibuka tiap Kamis.</span>
-        <span className="label-tanur text-[0.68rem] text-[#e9c6a6]">
+        <span className="label-tanur text-[0.75rem] text-[#e9c6a6]">
           {berikut ? `Angkatan ${site.angkatanTerbaru + 1} keluar ${tanggalPanjang(berikut)}` : `Angkatan ${site.angkatanTerbaru + 1} sedang disiapkan`}
         </span>
       </p>

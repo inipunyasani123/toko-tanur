@@ -147,7 +147,7 @@ export default function Pesanan({ kode }) {
     <>
       <div className="tanpa-cetak">
         <div className="wadah pb-8 pt-10 sm:pt-14">
-          <p className="label-tanur text-[0.7rem] text-liat-tua">{menunggu ? `Terima kasih, ${namaDepan}` : `Pesanan ${namaDepan}`}</p>
+          <p className="label-tanur text-[0.75rem] text-liat-tua">{menunggu ? `Terima kasih, ${namaDepan}` : `Pesanan ${namaDepan}`}</p>
           <h1 className="mt-2 break-words text-[2.3rem] leading-tight sm:text-6xl">
             Pesanan <span className="whitespace-nowrap">{o.kode}</span>
           </h1>

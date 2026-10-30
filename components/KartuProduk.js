@@ -28,12 +28,12 @@ export default function KartuProduk({ produk: p, inventaris, judulTag = 'h3', gl
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
           className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
-        <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.64rem] text-tinta-2">Angkatan {p.angkatan}</p>
+        <p className="label-tanur absolute left-3 top-3 bg-kertas/90 px-2 py-1 text-[0.75rem] text-tinta-2">Angkatan {p.angkatan}</p>
         {stok === 0 && (
-          <p className="label-tanur absolute right-3 top-3 bg-tinta px-2 py-1 text-[0.64rem] text-kertas">Habis</p>
+          <p className="label-tanur absolute right-3 top-3 bg-tinta px-2 py-1 text-[0.75rem] text-kertas">Habis</p>
         )}
         {stok !== null && stok > 0 && stok <= 4 && (
-          <p className="label-tanur absolute right-3 top-3 bg-kertas px-2 py-1 text-[0.64rem] text-awas">Sisa {stok}</p>
+          <p className="label-tanur absolute right-3 top-3 bg-kertas px-2 py-1 text-[0.75rem] text-awas">Sisa {stok}</p>
         )}
       </div>
       <div className="flex flex-1 flex-col pt-3">

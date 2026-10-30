@@ -112,7 +112,7 @@ export default function Hero() {
                   >
                     <span aria-hidden="true" className="relative z-10 block h-3 w-3 rounded-full border-2 border-[#5b4434] bg-[#c9a37f]" />
                     <UbinUji glasir={x.id} className="ubin -mt-1.5 h-auto w-12 transition-transform duration-300 group-hover:translate-y-1 sm:w-14" />
-                    <span className="label-tanur mt-2 text-[0.62rem] text-tinta-3">{x.kode}</span>
+                    <span className="label-tanur mt-2 text-[0.75rem] text-tinta-3">{x.kode}</span>
                     <span className="nama mt-0.5 text-[0.85rem] font-medium leading-tight decoration-liat decoration-2 underline-offset-4">
                       {x.nama}
                     </span>

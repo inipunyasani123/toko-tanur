@@ -20,7 +20,7 @@ export default function TidakDitemukan() {
         </svg>
       </div>
       <div className="lg:col-span-6 lg:col-start-7">
-        <p className="label-tanur text-[0.72rem] text-liat-tua">404 · tidak lolos sortir</p>
+        <p className="label-tanur text-[0.75rem] text-liat-tua">404 · tidak lolos sortir</p>
         <h1 className="mt-3 text-5xl sm:text-6xl">Halaman ini retak di tanur</h1>
         <p className="mt-4 max-w-lg text-tinta-2">
           Alamat yang kamu buka tidak ada, atau sudah pindah. Tidak semua keping lolos dari pembakaran, dan halaman ini salah satunya.

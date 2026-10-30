@@ -91,7 +91,7 @@ export default function KotakBerlapis() {
       <ol className="grid gap-3 text-[0.95rem]">
         {[{ huruf: 'A', teks: 'Keping keramik, sudah diperiksa retak dan goyang' }, ...[...LAPISAN].reverse()].map((l) => (
           <li key={l.huruf} className="flex items-baseline gap-3 border-b border-garis pb-2.5 last:border-0">
-            <span className="label-tanur inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-tinta text-[0.7rem] text-kertas" aria-hidden="true">
+            <span className="label-tanur inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-tinta text-[0.75rem] text-kertas" aria-hidden="true">
               {l.huruf}
             </span>
             <span>{l.teks}</span>

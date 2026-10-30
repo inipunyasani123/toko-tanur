@@ -116,7 +116,7 @@
   /* Label log tanur: huruf mono kecil berspasi */
   .label-tanur {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     line-height: 1.3;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -282,3 +282,9 @@
 .hanya-cetak {
   display: none;
 }
+
+/* Target sentuh tautan footer dan ringkasan lipat */
+footer a:not(.inline-flex):not([class*="block"]) { display: inline-flex; align-items: center; min-height: 28px; }
+summary { min-height: 28px; }
+table a { display: inline-block; padding-block: 4px; }
+nav[aria-label="Jejak halaman"] a { display: inline-block; padding-block: 5px; }

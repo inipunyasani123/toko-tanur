@@ -39,11 +39,11 @@ export default function Linimasa({ pesanan, ringkas = false }) {
                 {s.label}
                 <span className="sr-only">{sekarang ? ' (status sekarang)' : selesai ? ' (selesai)' : ' (belum)'}</span>
               </p>
-              <p className="label-tanur mt-1 text-[0.66rem] text-tinta-2">{waktu ? waktuWIB(waktu) : 'Belum'}</p>
+              <p className="label-tanur mt-1 text-[0.75rem] text-tinta-2">{waktu ? waktuWIB(waktu) : 'Belum'}</p>
               {!ringkas && selesai && <p className="mt-1 text-[0.9rem] text-tinta-2">{s.ket}</p>}
               {!ringkas && s.id === 'dikirim' && pesanan.resi && (
                 <p className="mt-1 text-[0.9rem]">
-                  Resi contoh: <span className="label-tanur text-[0.72rem] text-tinta">{pesanan.resi}</span>
+                  Resi contoh: <span className="label-tanur text-[0.75rem] text-tinta">{pesanan.resi}</span>
                 </p>
               )}
             </div>

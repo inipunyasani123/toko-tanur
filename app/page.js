@@ -41,7 +41,7 @@ function UbinKategori({ id, besar = false, className = '' }) {
       <div aria-hidden="true" className="cincin absolute -bottom-24 -right-24 h-72 w-72 rounded-full opacity-80" />
       <h3 className={`relative ${besar ? 'text-4xl sm:text-5xl' : 'text-2xl sm:text-[1.7rem]'}`}>{k.nama}</h3>
       <p className="relative mt-1 max-w-[14rem] text-[0.92rem] text-tinta-2">{k.ringkas}</p>
-      <p className="label-tanur relative mt-3 text-[0.66rem] text-tinta-2">
+      <p className="label-tanur relative mt-3 text-[0.75rem] text-tinta-2">
         {jumlah} model
         <span className="block sm:inline"> <span className="hidden sm:inline">· </span>mulai {rupiah(mulai)}</span>
       </p>
@@ -164,7 +164,7 @@ export default function Beranda() {
                       <UbinUji glasir={g.id} className="w-12 shrink-0 transition-transform group-hover:-translate-y-1" />
                       <span>
                         <span className="block text-[1.05rem] font-medium leading-snug text-kertas group-hover:underline">{g.nama}</span>
-                        <span className="label-tanur mt-1 block text-[0.62rem] text-[#d9c9b6]">
+                        <span className="label-tanur mt-1 block text-[0.75rem] text-[#d9c9b6]">
                           {g.kode} · {g.kilap} · {perGlasir[g.id]} model
                         </span>
                         <span className="mt-2 block text-[0.88rem] leading-snug text-[#d6cabb]">{g.catatan}</span>
@@ -192,7 +192,7 @@ export default function Beranda() {
             <ol className="mt-8 border-t border-tinta">
               {LOG.map((l) => (
                 <li key={l.judul} className="grid grid-cols-[5.5rem_1fr] gap-4 border-b border-garis py-4">
-                  <p className="label-tanur pt-1 text-[0.68rem] text-liat-tua">{l.hari}</p>
+                  <p className="label-tanur pt-1 text-[0.75rem] text-liat-tua">{l.hari}</p>
                   <div>
                     <h3 className="font-sans text-[1.02rem] font-semibold leading-snug tracking-normal">{l.judul}</h3>
                     <p className="mt-1 text-[0.95rem] text-tinta-2">{l.isi}</p>
@@ -236,7 +236,7 @@ export default function Beranda() {
             <div className="gelap rounded-[3px] bg-jelaga p-5 text-[#efe5d8] sm:p-7">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="text-2xl text-kertas">Kurva bakar angkatan {site.angkatanTerbaru}</h3>
-                <p className="label-tanur text-[0.66rem] text-[#d9c9b6]">Suhu tanur (°C) per jam</p>
+                <p className="label-tanur text-[0.75rem] text-[#d9c9b6]">Suhu tanur (°C) per jam</p>
               </div>
               <p className="mt-2 max-w-xl text-[0.92rem] text-[#d6cabb]">
                 Suhu dinaikkan pelan di 573&nbsp;°C karena kuarsa dalam tanah berubah bentuk di titik itu. Setelah puncak, tanur didinginkan
@@ -283,7 +283,7 @@ export default function Beranda() {
               </p>
               <div className="mt-4">
                 <table className="w-full border-collapse text-left text-[0.92rem]">
-                  <caption className="label-tanur mb-2 text-left text-[0.66rem] text-tinta-3">Contoh tarif per kg dari {site.asal}</caption>
+                  <caption className="label-tanur mb-2 text-left text-[0.75rem] text-tinta-3">Contoh tarif per kg dari {site.asal}</caption>
                   <thead>
                     <tr className="border-b border-tinta">
                       <th scope="col" className="py-2 pe-3 font-semibold">Tujuan</th>
@@ -316,7 +316,7 @@ export default function Beranda() {
           <div className="lg:col-span-5">
             <div className="tepi-sobek relative bg-kertas px-6 py-9 sm:px-8">
               <Stempel className="absolute right-5 top-6 h-14 w-14 rotate-12 text-liat-tua opacity-80" />
-              <p className="label-tanur text-[0.68rem] text-liat-tua">Ikut di setiap kotak</p>
+              <p className="label-tanur text-[0.75rem] text-liat-tua">Ikut di setiap kotak</p>
               <h2 id="judul-rawat" className="mt-2 pe-16 text-[2rem] sm:text-4xl">
                 Kartu rawat
               </h2>
@@ -345,7 +345,7 @@ export default function Beranda() {
                   <span className="relative block aspect-square overflow-hidden rounded-t-[3px]">
                     <FotoKeramik slug={b} sizes="(min-width: 640px) 12vw, 45vw" />
                   </span>
-                  <p className="label-tanur px-3 py-3 text-[0.62rem] text-tinta-3">
+                  <p className="label-tanur px-3 py-3 text-[0.75rem] text-tinta-3">
                     Keping {String.fromCharCode(65 + i)} ·{' '}
                     <span className="whitespace-nowrap">Ø {[12.1, 11.9, 12.2, 12.0][i].toLocaleString('id-ID')} cm</span>
                   </p>

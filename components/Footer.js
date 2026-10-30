@@ -58,7 +58,7 @@ export default function Footer() {
       </div>
       <div className="wadah relative flex flex-wrap items-center justify-between gap-3 border-t border-white/15 py-5 text-[0.82rem] text-[#cbbfb0]">
         <p>Semua produk, harga, stok, dan pesanan di situs ini contoh.</p>
-        <p className="label-tanur text-[0.66rem]">Angkatan {site.angkatanTerbaru} · {suhu(site.suhuPuncak)}</p>
+        <p className="label-tanur text-[0.75rem]">Angkatan {site.angkatanTerbaru} · {suhu(site.suhuPuncak)}</p>
       </div>
     </footer>
   );
